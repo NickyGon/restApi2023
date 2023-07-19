@@ -14,7 +14,7 @@ public class CRUDItemTest {
         int projectId=4114346; //Para no crear un proyecto cada vez. Usando uno de los existentes
         int itemId;
         JSONObject body = new JSONObject();
-        body.put("Content","Item para la casa 3");
+        body.put("Content","Item para casa Clase");
         body.put("ProjectId",projectId);
         //CREATE
         Response response=given()

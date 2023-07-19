@@ -18,6 +18,9 @@ public class Compare2JSON {
         JSONObject actual;
         boolean valiter=true;
 
+        ObjectMapper mapper= new ObjectMapper();
+
+
         System.out.println("Expected JSON key values");
         iterateInfo(expectedJSON);
         System.out.println("------------------------");
@@ -26,16 +29,19 @@ public class Compare2JSON {
         System.out.println(" ");
         try {
             expected= new JSONObject(expectedJSON);
+            System.out.println(mapper.readTree(String.valueOf(expected)));
         } catch (Exception e){
             System.out.println("* Expected JSON (and maybe actual JSON) is not correctly formatted");
             return false;
         }
         try {
             actual= new JSONObject(actualResult);
+            System.out.println(mapper.readTree(String.valueOf(actual)));
         } catch (Exception e){
             System.out.println("* Actual JSON is not correctly formatted");
             return false;
         }
+
         if (!expected.keySet().equals(actual.keySet())){
             System.out.println("* There are not the same keys in both JSONs");
             return false;
